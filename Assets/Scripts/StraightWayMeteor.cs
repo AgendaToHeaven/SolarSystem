@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.Collections;
+
 
 public class StraightWayMeteor : MonoBehaviour {
 
@@ -13,193 +15,160 @@ public class StraightWayMeteor : MonoBehaviour {
     public Transform uranus;
     public Transform neptune;
     public float velocity;
+    public float angle;
     private float closeDistance;
+    private Vector3 vEnd;
+    private Vector3 vGravity;
+    private float fEnd;
+    private float fGravity;
+    private float fResulted;
+    
 
 
     void Awake()
     {
         velocity = 50.0f;
-        closeDistance = 1000f;
+        closeDistance = 500f;
     }
 
-    private void SunProximity()
+    private void PlanetProximity()
+    {
+        if (SunProximity())
+        {
+            fEnd = velocity;
+            fGravity = 100;
+            vEnd = end.position - transform.position;
+            vGravity = sun.position - transform.position;
+            angle = Vector3.Angle(vEnd, vGravity);
+            fResulted = Mathf.Sqrt(Mathf.Pow(fEnd, 2) + Mathf.Pow(fGravity, 2) + (2 * fEnd * fGravity * Mathf.Cos(angle)));
+
+
+
+        }
+
+    }
+
+    private bool SunProximity()
     {
         Vector3 offset = sun.position - transform.position;
         float sqrLen = offset.sqrMagnitude;
         if (sqrLen < closeDistance * closeDistance)
         {
             print(sqrLen.ToString() + " 10^6 km. " + "The other transform " + sun.ToString() +"is close to me and can attract me!");
-            if (sun.position.x > transform.position.x)
-            {
-                print("Trayectoria modificada derecha");
-                end.Translate(Vector3.right.normalized);
-            }
-            else
-            {
-                print("Trayectoria modificada izquiera");
-                end.Translate(Vector3.left.normalized);
-            }
+            return true;            
         }
+
+        return false;
     }
 
-    private void MercuryProximity()
+    private bool MercuryProximity()
     {
         Vector3 offset = mercury.position - transform.position;
         float sqrLen = offset.sqrMagnitude;
         if (sqrLen < closeDistance * closeDistance)
         {
-            print(sqrLen.ToString() + " 10^6 km. " + "The other transform " + mercury.ToString() + " is close to me and can attract me!");
-            if (mercury.position.x > transform.position.x)
-            {
-                print("Trayectoria modificada derecha");
-                end.Translate(Vector3.right.normalized);
-            }
-            else
-            {
-                print("Trayectoria modificada izquiera");
-                end.Translate(Vector3.left.normalized);
-            }
+            print(sqrLen.ToString() + " 10^6 km. " + "The other transform " + sun.ToString() + "is close to me and can attract me!");
+            return true;
         }
+
+        return false;
+
     }
 
-    private void VenusProximity()
+    private bool VenusProximity()
     {
         Vector3 offset = venus.position - transform.position;
         float sqrLen = offset.sqrMagnitude;
         if (sqrLen < closeDistance * closeDistance)
         {
-            print(sqrLen.ToString() + " 10^6 km. " + "The other transform " + venus.ToString() + " is close to me and can attract me!");
-            if (venus.position.x > transform.position.x)
-            {
-                print("Trayectoria modificada derecha");
-                end.Translate(Vector3.right.normalized);
-            }
-            else
-            {
-                print("Trayectoria modificada izquiera");
-                end.Translate(Vector3.left.normalized);
-            }
+            print(sqrLen.ToString() + " 10^6 km. " + "The other transform " + sun.ToString() + "is close to me and can attract me!");
+            return true;
         }
+
+        return false;
+
     }
 
-    private void EarthProximity()
+    private bool EarthProximity()
     {
         Vector3 offset = earth.position - transform.position;
         float sqrLen = offset.sqrMagnitude;
         if (sqrLen < closeDistance * closeDistance)
         {
-            print(sqrLen.ToString() + " 10^6 km. " + "The other transform " + earth.ToString() + " is close to me and can attract me!");
-            if (earth.position.x > transform.position.x)
-            {
-                print("Trayectoria modificada derecha");
-                end.Translate(Vector3.right.normalized);
-            }
-            else
-            {
-                print("Trayectoria modificada izquiera");
-                end.Translate(Vector3.left.normalized);
-            }
+            print(sqrLen.ToString() + " 10^6 km. " + "The other transform " + sun.ToString() + "is close to me and can attract me!");
+            return true;
         }
+
+        return false;
+
     }
 
-    private void MarsProximity()
+    private bool MarsProximity()
     {
         Vector3 offset = mars.position - transform.position;
         float sqrLen = offset.sqrMagnitude;
         if (sqrLen < closeDistance * closeDistance)
         {
-            print(sqrLen.ToString() + " 10^6 km. " + "The other transform " + mars.ToString() + " is close to me and can attract me!");
-            if (mars.position.x > transform.position.x)
-            {
-                print("Trayectoria modificada derecha");
-                end.Translate(Vector3.right.normalized);
-            }
-            else
-            {
-                print("Trayectoria modificada izquiera");
-                end.Translate(Vector3.left.normalized);
-            }
+            print(sqrLen.ToString() + " 10^6 km. " + "The other transform " + sun.ToString() + "is close to me and can attract me!");
+            return true;
         }
+
+        return false;
+
     }
 
-    private void JupiterProximity()
+    private bool JupiterProximity()
     {
         Vector3 offset = jupiter.position - transform.position;
         float sqrLen = offset.sqrMagnitude;
         if (sqrLen < closeDistance * closeDistance)
         {
-            print(sqrLen.ToString() + " 10^6 km. " + "The other transform " + jupiter.ToString() + " is close to me and can attract me!");
-            if (jupiter.position.x > transform.position.x)
-            {
-                print("Trayectoria modificada derecha");
-                end.Translate(Vector3.right.normalized);
-            }
-            else
-            {
-                print("Trayectoria modificada izquiera");
-                end.Translate(Vector3.left.normalized);
-            }
+            print(sqrLen.ToString() + " 10^6 km. " + "The other transform " + sun.ToString() + "is close to me and can attract me!");
+            return true;
         }
+
+        return false;
+
     }
 
-    private void SaturnProximity()
+    private bool SaturnProximity()
     {
         Vector3 offset = saturn.position - transform.position;
         float sqrLen = offset.sqrMagnitude;
         if (sqrLen < closeDistance * closeDistance)
         {
-            print(sqrLen.ToString() + " 10^6 km. " + "The other transform " + saturn.ToString() + " is close to me and can attract me!");
-            if (saturn.position.x > transform.position.x)
-            {
-                print("Trayectoria modificada derecha");
-                end.Translate(Vector3.right.normalized);
-            }
-            else
-            {
-                print("Trayectoria modificada izquiera");
-                end.Translate(Vector3.left.normalized);
-            }
+            print(sqrLen.ToString() + " 10^6 km. " + "The other transform " + sun.ToString() + "is close to me and can attract me!");
+            return true;
         }
+
+        return false;
+
     }
 
-    private void UranusProximity()
+    private bool UranusProximity()
     {
         Vector3 offset = uranus.position - transform.position;
         float sqrLen = offset.sqrMagnitude;
         if (sqrLen < closeDistance * closeDistance)
         {
-            print(sqrLen.ToString() + " 10^6 km. " + "The other transform " + uranus.ToString() + " is close to me and can attract me!");
-            if (uranus.position.x > transform.position.x)
-            {
-                print("Trayectoria modificada derecha");
-                end.Translate(Vector3.right.normalized);
-            }
-            else
-            {
-                print("Trayectoria modificada izquiera");
-                end.Translate(Vector3.left.normalized);
-            }
+            print(sqrLen.ToString() + " 10^6 km. " + "The other transform " + sun.ToString() + "is close to me and can attract me!");
+            return true;
         }
+
+        return false;
     }
 
-    private void NeptuneProximity()
+    private bool NeptuneProximity()
     {
         Vector3 offset = neptune.position - transform.position;
         float sqrLen = offset.sqrMagnitude;
         if (sqrLen < closeDistance * closeDistance)
         {
-            print(sqrLen.ToString() + " 10^6 km. " + "The other transform " + neptune.ToString() + " is close to me and can attract me!");
-            if (neptune.position.x > transform.position.x)
-            {
-                print("Trayectoria modificada derecha");
-                end.Translate(Vector3.right.normalized);
-            }
-            else
-            {
-                print("Trayectoria modificada izquiera");
-                end.Translate(Vector3.left.normalized);
-            }
+            print(sqrLen.ToString() + " 10^6 km. " + "The other transform " + sun.ToString() + "is close to me and can attract me!");
+            return true;
         }
+
+        return false;
     }
 
     // Use this for initialization
@@ -217,16 +186,9 @@ public class StraightWayMeteor : MonoBehaviour {
         }*/
         // Gets a vector that points from the meteor's position to the target's and calculate distance.
 
-        SunProximity();
-        MercuryProximity();
-        VenusProximity();
-        EarthProximity();
-        MarsProximity();
-        JupiterProximity();
-        SaturnProximity();
-        UranusProximity();
-        NeptuneProximity();
+        PlanetProximity();
 
-        transform.position = Vector3.MoveTowards(transform.position, end.position, Time.deltaTime * velocity);
+        transform.position = Vector3.MoveTowards(transform.position,end.position.normalized, Time.deltaTime * velocity);
+
     }
 }
