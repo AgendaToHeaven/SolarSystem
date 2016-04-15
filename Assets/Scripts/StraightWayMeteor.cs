@@ -4,7 +4,7 @@ using System.Collections;
 
 public class StraightWayMeteor : MonoBehaviour {
 
-    public Transform end;
+    public GameObject end;
     public GameObject sun;
     public GameObject mercury;
     public GameObject venus;
@@ -17,7 +17,7 @@ public class StraightWayMeteor : MonoBehaviour {
     public float meteorVelocity;
     private float angle;
     private float closeDistance;
-    private float meteorMass;
+    private float meteorMass = 2;
     private Vector3 vEnd;
     private Vector3 vGravity;
     private Vector3 vResulted;
@@ -35,12 +35,12 @@ public class StraightWayMeteor : MonoBehaviour {
 
     private void PlanetProximity()
     {
-        closeDistance = 2500f;
+        
         if (SunProximity())
-        {
-            fEnd = meteorVelocity;            
-            fGravity = 10;
-            vEnd = end.position - transform.position;
+        {            
+            fEnd = meteorVelocity * meteorMass;            
+            fGravity = 100;
+            vEnd = end.transform.position - transform.position;
             vGravity = sun.transform.position - transform.position;
             angle = Vector3.Angle(vEnd, vGravity);
             fResulted = Mathf.Sqrt(Mathf.Pow(fEnd, 2) + Mathf.Pow(fGravity, 2) + (2 * fEnd * fGravity * Mathf.Cos(angle)));
@@ -48,13 +48,12 @@ public class StraightWayMeteor : MonoBehaviour {
             print("fEnd: " + fEnd + " fResulted: " + fResulted);
             transform.position = Vector3.MoveTowards(transform.position, vResulted, Time.deltaTime * fResulted);
         }
-        closeDistance = 100f;
+        
         if (MercuryProximity())
         {
             fEnd = meteorVelocity;
-            closeDistance = 1000f;
             fGravity = 10;
-            vEnd = end.position - transform.position;
+            vEnd = end.transform.position - transform.position;
             vGravity = mercury.transform.position - transform.position;
             angle = Vector3.Angle(vEnd, vGravity);
             fResulted = Mathf.Sqrt(Mathf.Pow(fEnd, 2) + Mathf.Pow(fGravity, 2) + (2 * fEnd * fGravity * Mathf.Cos(angle)));
@@ -62,12 +61,12 @@ public class StraightWayMeteor : MonoBehaviour {
 
             transform.position = Vector3.MoveTowards(transform.position, vResulted, Time.deltaTime * fResulted);
         }
-        closeDistance = 200f;
+
         if (VenusProximity())
         {
             fEnd = meteorVelocity;
             fGravity = 10;
-            vEnd = end.position - transform.position;
+            vEnd = end.transform.position - transform.position;
             vGravity = venus.transform.position - transform.position;
             angle = Vector3.Angle(vEnd, vGravity);
             fResulted = Mathf.Sqrt(Mathf.Pow(fEnd, 2) + Mathf.Pow(fGravity, 2) + (2 * fEnd * fGravity * Mathf.Cos(angle)));
@@ -75,12 +74,12 @@ public class StraightWayMeteor : MonoBehaviour {
 
             transform.position = Vector3.MoveTowards(transform.position, vResulted, Time.deltaTime * fResulted);
         }
-        closeDistance = 200f;
+
         if (EarthProximity())
         {
             fEnd = meteorVelocity;
             fGravity = 10;
-            vEnd = end.position - transform.position;
+            vEnd = end.transform.position - transform.position;
             vGravity = earth.transform.position - transform.position;
             angle = Vector3.Angle(vEnd, vGravity);
             fResulted = Mathf.Sqrt(Mathf.Pow(fEnd, 2) + Mathf.Pow(fGravity, 2) + (2 * fEnd * fGravity * Mathf.Cos(angle)));
@@ -88,12 +87,12 @@ public class StraightWayMeteor : MonoBehaviour {
 
             transform.position = Vector3.MoveTowards(transform.position, vResulted, Time.deltaTime * fResulted);
         }
-        closeDistance = 150f;
+
         if (MarsProximity())
         {
             fEnd = meteorVelocity;
             fGravity = 10;
-            vEnd = end.position - transform.position;
+            vEnd = end.transform.position - transform.position;
             vGravity = mars.transform.position - transform.position;
             angle = Vector3.Angle(vEnd, vGravity);
             fResulted = Mathf.Sqrt(Mathf.Pow(fEnd, 2) + Mathf.Pow(fGravity, 2) + (2 * fEnd * fGravity * Mathf.Cos(angle)));
@@ -101,12 +100,12 @@ public class StraightWayMeteor : MonoBehaviour {
 
             transform.position = Vector3.MoveTowards(transform.position, vResulted, Time.deltaTime * fResulted);
         }
-        closeDistance = 750f;
+
         if (JupiterProximity())
         {
             fEnd = meteorVelocity;
             fGravity = 10;
-            vEnd = end.position - transform.position;
+            vEnd = end.transform.position - transform.position;
             vGravity = jupiter.transform.position - transform.position;
             angle = Vector3.Angle(vEnd, vGravity);
             fResulted = Mathf.Sqrt(Mathf.Pow(fEnd, 2) + Mathf.Pow(fGravity, 2) + (2 * fEnd * fGravity * Mathf.Cos(angle)));
@@ -114,12 +113,12 @@ public class StraightWayMeteor : MonoBehaviour {
 
             transform.position = Vector3.MoveTowards(transform.position, vResulted, Time.deltaTime * fResulted);
         }
-        closeDistance = 650f;
+
         if (SaturnProximity())
         {
             fEnd = meteorVelocity;
             fGravity = 10;
-            vEnd = end.position - transform.position;
+            vEnd = end.transform.position - transform.position;
             vGravity = saturn.transform.position - transform.position;
             angle = Vector3.Angle(vEnd, vGravity);
             fResulted = Mathf.Sqrt(Mathf.Pow(fEnd, 2) + Mathf.Pow(fGravity, 2) + (2 * fEnd * fGravity * Mathf.Cos(angle)));
@@ -127,12 +126,12 @@ public class StraightWayMeteor : MonoBehaviour {
 
             transform.position = Vector3.MoveTowards(transform.position, vResulted, Time.deltaTime * fResulted);
         }
-        closeDistance = 500f;
+
         if (UranusProximity())
         {
             fEnd = meteorVelocity;
             fGravity = 10;
-            vEnd = end.position - transform.position;
+            vEnd = end.transform.position - transform.position;
             vGravity = uranus.transform.position - transform.position;
             angle = Vector3.Angle(vEnd, vGravity);
             fResulted = Mathf.Sqrt(Mathf.Pow(fEnd, 2) + Mathf.Pow(fGravity, 2) + (2 * fEnd * fGravity * Mathf.Cos(angle)));
@@ -145,7 +144,7 @@ public class StraightWayMeteor : MonoBehaviour {
         {
             fEnd = meteorVelocity;
             fGravity = 10;
-            vEnd = end.position - transform.position;
+            vEnd = end.transform.position - transform.position;
             vGravity = neptune.transform.position - transform.position;
             angle = Vector3.Angle(vEnd, vGravity);
             fResulted = Mathf.Sqrt(Mathf.Pow(fEnd, 2) + Mathf.Pow(fGravity, 2) + (2 * fEnd * fGravity * Mathf.Cos(angle)));
@@ -158,6 +157,7 @@ public class StraightWayMeteor : MonoBehaviour {
 
     private bool SunProximity()
     {
+        closeDistance = 1500f;
         Vector3 offset = sun.transform.position - transform.position;
         float sqrLen = offset.sqrMagnitude;
         if (sqrLen < Mathf.Pow(closeDistance, 2))
@@ -171,6 +171,7 @@ public class StraightWayMeteor : MonoBehaviour {
 
     private bool MercuryProximity()
     {
+        closeDistance = 50f;
         Vector3 offset = mercury.transform.position - transform.position;
         float sqrLen = offset.sqrMagnitude;
         if (sqrLen < Mathf.Pow(closeDistance, 2))
@@ -185,6 +186,7 @@ public class StraightWayMeteor : MonoBehaviour {
 
     private bool VenusProximity()
     {
+        closeDistance = 60f;
         Vector3 offset = venus.transform.position - transform.position;
         float sqrLen = offset.sqrMagnitude;
         if (sqrLen < Mathf.Pow(closeDistance, 2))
@@ -199,6 +201,7 @@ public class StraightWayMeteor : MonoBehaviour {
 
     private bool EarthProximity()
     {
+        closeDistance = 150f;
         Vector3 offset = earth.transform.position - transform.position;
         float sqrLen = offset.sqrMagnitude;
         if (sqrLen < Mathf.Pow(closeDistance, 2))
@@ -213,6 +216,7 @@ public class StraightWayMeteor : MonoBehaviour {
 
     private bool MarsProximity()
     {
+        closeDistance = 150f;
         Vector3 offset = mars.transform.position - transform.position;
         float sqrLen = offset.sqrMagnitude;
         if (sqrLen < Mathf.Pow(closeDistance, 2))
@@ -227,6 +231,7 @@ public class StraightWayMeteor : MonoBehaviour {
 
     private bool JupiterProximity()
     {
+        closeDistance = 600f;
         Vector3 offset = jupiter.transform.position - transform.position;
         float sqrLen = offset.sqrMagnitude;
         if (sqrLen < Mathf.Pow(closeDistance, 2))
@@ -241,6 +246,7 @@ public class StraightWayMeteor : MonoBehaviour {
 
     private bool SaturnProximity()
     {
+        closeDistance = 500f;
         Vector3 offset = saturn.transform.position - transform.position;
         float sqrLen = offset.sqrMagnitude;
         if (sqrLen < Mathf.Pow(closeDistance, 2))
@@ -255,6 +261,7 @@ public class StraightWayMeteor : MonoBehaviour {
 
     private bool UranusProximity()
     {
+        closeDistance = 250f;
         Vector3 offset = uranus.transform.position - transform.position;
         float sqrLen = offset.sqrMagnitude;
         if (sqrLen < Mathf.Pow(closeDistance, 2))
@@ -268,6 +275,7 @@ public class StraightWayMeteor : MonoBehaviour {
 
     private bool NeptuneProximity()
     {
+        closeDistance = 200f;
         Vector3 offset = neptune.transform.position - transform.position;
         float sqrLen = offset.sqrMagnitude;
         if (sqrLen < Mathf.Pow(closeDistance, 2))
@@ -289,7 +297,7 @@ public class StraightWayMeteor : MonoBehaviour {
         
         PlanetProximity();
 
-        transform.position = Vector3.MoveTowards(transform.position, end.position, Time.deltaTime * meteorVelocity);
+        transform.position = Vector3.MoveTowards(transform.position, end.transform.position, Time.deltaTime * meteorVelocity);
 
     }
 }

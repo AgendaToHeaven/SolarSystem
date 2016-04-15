@@ -13,6 +13,7 @@ public class SolarSystemManager : MonoBehaviour {
     public GameObject saturn;
     public GameObject uranus;
     public GameObject neptune;
+    public GameObject end;
 
 
     void Awake()
@@ -28,6 +29,7 @@ public class SolarSystemManager : MonoBehaviour {
         selector.GetComponent<StraightWayMeteor>().saturn = saturn;
         selector.GetComponent<StraightWayMeteor>().uranus = uranus;
         selector.GetComponent<StraightWayMeteor>().neptune = neptune;
+        selector.GetComponent<StraightWayMeteor>().end = end;
 
     }
 
