@@ -15,7 +15,6 @@ public class SolarSystemManager : MonoBehaviour {
     public GameObject neptune;
     public GameObject end;
 
-
     void Awake()
     {
         selector = Instantiate(Resources.Load("Meteorito01", typeof(GameObject))) as GameObject;
@@ -31,6 +30,9 @@ public class SolarSystemManager : MonoBehaviour {
         selector.GetComponent<StraightWayMeteor>().neptune = neptune;
         selector.GetComponent<StraightWayMeteor>().end = end;
 
+        selector = Instantiate(Resources.Load("MeteorRain", typeof(GameObject))) as GameObject;
+        selector.gameObject.SetActive(true);
+        
     }
 
 	// Use this for initialization
